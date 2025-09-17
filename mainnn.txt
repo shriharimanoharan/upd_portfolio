@@ -1,0 +1,19 @@
+import pyttsx3 # type: ignore #!pip install pyttsx3
+import speech_recognition as sr  # type: ignore
+
+def initialize_turbo():
+    turbo = pyttsx3.init("sapi5")
+    voices = turbo.getProperty('voices')
+    turbo.setProperty('Shri',voices[1].id) 
+    rate = turbo.getProperty('rate')
+    turbo.setProperty('rate',rate-60)
+    volume = turbo.getProperty('volume')
+    turbo.setProperty('volume', volume+0.55)
+    return turbo
+
+def speak(text):
+    turbo = initialize_turbo()
+    turbo.say(text)
+    turbo.RunAndWait()
+
+speak("Hello,I'm Mantis")
